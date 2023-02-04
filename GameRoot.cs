@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using NeonVectorShooter.Entities;
 
 namespace NeonVectorShooter;
 
@@ -9,8 +10,13 @@ public class GameRoot : Game
 	private GraphicsDeviceManager _graphics;
 	private SpriteBatch _spriteBatch;
 
+	public static GameRoot Instance { get; private set; }
+	public static Viewport Viewport => Instance.GraphicsDevice.Viewport;
+	public static Vector2 ScreenSize => new Vector2(Viewport.Width, Viewport.Height);
+
 	public GameRoot()
 	{
+		Instance = this;
 		_graphics = new GraphicsDeviceManager(this);
 		Content.RootDirectory = "Content";
 		IsMouseVisible = true;
@@ -21,6 +27,7 @@ public class GameRoot : Game
 		// TODO: Add your initialization logic here
 
 		base.Initialize();
+		EntityManager.Add(PlayerShip.Instance);
 	}
 
 	protected override void LoadContent()
@@ -28,6 +35,7 @@ public class GameRoot : Game
 		_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 		// TODO: use this.Content to load your game content here
+		Art.Load(Content);
 	}
 
 	protected override void Update(GameTime gameTime)
@@ -39,6 +47,7 @@ public class GameRoot : Game
 		// TODO: Add your update logic here
 
 		base.Update(gameTime);
+		EntityManager.Update();
 	}
 
 	protected override void Draw(GameTime gameTime)
@@ -48,5 +57,10 @@ public class GameRoot : Game
 		// TODO: Add your drawing code here
 
 		base.Draw(gameTime);
+		GraphicsDevice.Clear(Color.Black);
+
+		_spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
+		EntityManager.Draw(_spriteBatch);
+		_spriteBatch.End();
 	}
 }
