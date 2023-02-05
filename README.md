@@ -1,6 +1,6 @@
 # Neon Vector Shooter
 
-![Neon Vector Shooter](https://github.com/MonoGame/MonoGame.Samples/blob/3.8.1/Images/NeonShooter-Sample.png)
+![Neon Vector Shooter](https://raw.githubusercontent.com/MonoGame/MonoGame.Samples/3.8.1/Images/NeonShooter-Sample.png)
 
 This project contains demo/reference code for MonoGame applications.
 The game is a neon, polygonal, twin-stick shooter.
