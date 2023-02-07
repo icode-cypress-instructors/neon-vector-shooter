@@ -42,7 +42,7 @@ public class PlayerShip : Entity
 			float randomSpread = rand.NextFloat(-spread, spread);
 			Vector2 vel = Math.FromPolar(aimAngle + randomSpread, bulletMagnitude);
 
-			Vector2 offset = Vector2.Transform(new Vector2(25 -8), aimQuat);
+			Vector2 offset = Vector2.Transform(new Vector2(25, -8), aimQuat);
 			EntityManager.Add(new Bullet(Position + offset, vel));
 
 			offset = Vector2.Transform(new Vector2(25, 8), aimQuat);
