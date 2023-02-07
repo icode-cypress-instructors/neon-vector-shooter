@@ -63,6 +63,7 @@ public class GameRoot : Game
 
 		_spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
 		EntityManager.Draw(_spriteBatch);
+		_spriteBatch.Draw(Art.Pointer, Input.MousePosition, Color.White);
 		_spriteBatch.End();
 	}
 }
