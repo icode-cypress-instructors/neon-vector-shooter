@@ -44,6 +44,8 @@ public class GameRoot : Game
 		    Keyboard.GetState().IsKeyDown(Keys.Escape))
 			Exit();
 
+		Input.Update();
+
 		// TODO: Add your update logic here
 
 		base.Update(gameTime);
